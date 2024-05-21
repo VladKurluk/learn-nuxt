@@ -1,17 +1,14 @@
 <template>
-    <div
-        class="p-12 bg-gray-100 w-full h-full min-h-screen flex flex-col items-center"
-    >
-      <div class="prose mb-12">
-        <h1>
-          <span class="font-medium">
-            Course:
-            <span class="font-bold">Mastering Nuxt 3</span>
-          </span>
-        </h1>
-      </div>
-  
-      <div class="flex flex-row justify-center flex-grow">
+    <div class="prose mb-12">
+    <h1>
+        <span class="font-medium">
+        Course:
+        <span class="font-bold">Mastering Nuxt 3</span>
+        </span>
+    </h1>
+    </div>
+
+    <div class="flex flex-row justify-center flex-grow">
         <div
             class="prose mr-4 p-8 bg-white rounded-md min-w-[20ch] max-w-[30ch] flex flex-col"
         >
@@ -25,7 +22,7 @@
                 <NuxtLink
                     v-for="(lesson, index) in chapter.lessons"
                     :key="lesson.slug"
-                    :to="`/course/chapter/${chapter.slug}/lesson/${lesson.slug}`"
+                    :to="lesson.path"
                     class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
                 >
                     <span class="text-gray-500">{{ index + 1 }}</span>
@@ -35,16 +32,41 @@
                 </NuxtLink>
             </div>
         </div>
-  
+
         <div class="prose p-12 bg-white rounded-md w-[65ch]">
-            <NuxtPage />
+            <NuxtErrorBoundary>
+                <template #error="{ error, clearError }">
+                    <div class="w-full h-full flex flex-col items-center justify-center">
+                        <p>Oh no, something went wrong with the lesson!
+                            <br />
+                            <code>{{ error }}</code>
+                        </p>
+                        <button
+                            class="hover:cursor-pointer bg-gray-500 text-white font-bold py-1 px-3 rounded mt-4"
+                            @click="() => resetError(clearError)"
+                        >
+                            Clear the error.
+                        </button>
+                    </div>
+                </template>
+                <NuxtPage />
+            </NuxtErrorBoundary>
         </div>
-      </div>
     </div>
-  </template>
+</template>
 
 <script setup>
 const { chapters } = useCourse();
+
+// definePageMeta({
+//   layout: false,
+// })
+const resetError = async (clearError) => {
+  await navigateTo(
+    '/course/chapter/1-chapter-1/lesson/1-introduction-to-typescript-with-vue-js-3'
+  );
+  clearError();
+};
 </script>
 
 <style scoped>
