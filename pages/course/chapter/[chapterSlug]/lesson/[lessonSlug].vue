@@ -62,7 +62,7 @@ import { navigateTo } from 'nuxt/app';
           );
         }
       },
-      // 'auth'
+      'auth'
     ]
   });
 
