@@ -14,4 +14,8 @@ export default defineNuxtConfig({
       cookieRedirect: true,
     }
   },
+  // Enabke this for fetch data witn builtin cache mechanism
+  // experimental: {
+  //   payloadExtraction: true,
+  // },
 });
