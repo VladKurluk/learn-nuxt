@@ -4,6 +4,7 @@ export default async <T>(url: string) => {
 
   if (!data.value) {
     const { error } = await useFetch<T>(url, {
+      headers: useRequestHeaders(["cookie"]),
       key: url,
       getCachedData(key) {
         return nuxtApp.payload.data[key] || nuxtApp.static.data[key];

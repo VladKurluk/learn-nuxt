@@ -19,8 +19,8 @@
 <script setup>
   defineProps({
     modelValue: {
-      type: Boolean,
-      default: false,
+      type: [Boolean, Number],
+      default: () => false,
     },
   });
   

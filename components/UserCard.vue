@@ -22,7 +22,7 @@ const logout = async () => {
   const { error } = await client.auth.signOut();
 
   if (error) {
-    console.error(error);
+    console.error("Logout error:", error);
     return;
   }
 

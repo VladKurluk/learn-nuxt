@@ -1,6 +1,6 @@
 // import { Lesson, LessonWithPath, Chapter, Course } from "~/types/course";
 // import courseData from "./courseData";
-import { CourseOutline } from '~/server/api/course/meta.get';
+import type { CourseOutline } from "~/server/api/course/meta.get";
 
 // export const useCourse = (): Course => {
 //   const chapters: Chapter[] = courseData.chapters.map((chapter: Chapter) => {
@@ -19,4 +19,7 @@ import { CourseOutline } from '~/server/api/course/meta.get';
 //   };
 // };
 
-export default async () => useFetchWithSessionCache<CourseOutline>("api/course/meta");
+export default async () => {
+  // return useFetchWithSessionCache<CourseOutline>("/api/course/meta");
+  return useFetchWithBuiltinCache<CourseOutline>("/api/course/meta");
+};

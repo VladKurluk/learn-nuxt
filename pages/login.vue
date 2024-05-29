@@ -20,7 +20,7 @@ const login = async () => {
   });
 
   if (error) {
-    console.error(error);
+    console.error("Login error:", error);
   }
 };
 </script>
