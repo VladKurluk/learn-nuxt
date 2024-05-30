@@ -1,5 +1,10 @@
+import vsharp from "vite-plugin-vsharp";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  vite: {
+    plugins: [vsharp()],
+  },
   modules: [
     "@nuxtjs/supabase",
     "@nuxtjs/tailwindcss",
@@ -15,7 +20,7 @@ export default defineNuxtConfig({
       login: "/login",
       callback: "/",
       include: undefined,
-      exclude: ["/course/chapter/1-chapter-1/*"],
+      exclude: ["/landing", "/course/chapter/1-chapter-1/*"],
       cookieRedirect: true,
     },
   },
@@ -24,4 +29,9 @@ export default defineNuxtConfig({
     payloadExtraction: true,
   },
   ssr: true,
+  nitro: {
+    prerender: {
+      routes: ["/landing"],
+    },
+  },
 });

@@ -25,6 +25,7 @@
     "@prisma/client": "^5.14.0",
     "@tailwindcss/typography": "^0.5.13",
     "pinia": "^2.1.7",
-    "prisma": "^5.14.0"
+    "prisma": "^5.14.0",
+    "vite-plugin-vsharp": "^1.7.3"
   }
 }
