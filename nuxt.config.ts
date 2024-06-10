@@ -34,4 +34,11 @@ export default defineNuxtConfig({
       routes: ["/landing"],
     },
   },
+  runtimeConfig: {
+    stripeSecret: "",
+    stripeWebhookSecret: "",
+    public: {
+      stripeKey: "",
+    },
+  },
 });

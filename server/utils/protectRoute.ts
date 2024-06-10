@@ -10,18 +10,18 @@ export default async (event: H3Event) => {
     });
   }
 
-  // // Check to see if this user has access to this course
-  // const hasAccess = await $fetch("/api/user/hasAccess", {
-  //   headers: {
-  //     // Make sure to pass along the cookie with the user session
-  //     cookie: getHeader(event, "cookie"),
-  //   },
-  // });
+  // Check to see if this user has access to this course
+  const hasAccess = await $fetch("/api/user/hasAccess", {
+    headers: {
+      // Make sure to pass along the cookie with the user session
+      cookie: getHeader(event, "cookie"),
+    },
+  });
 
-  // if (!hasAccess) {
-  //   throw createError({
-  //     statusCode: 401,
-  //     message: "Unauthorized",
-  //   });
-  // }
+  if (!hasAccess) {
+    throw createError({
+      statusCode: 401,
+      message: "Unauthorized",
+    });
+  }
 };
